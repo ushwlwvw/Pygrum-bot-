@@ -32,7 +32,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
             await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
 
 
-ERROR_MESSAGE = "ᴡᴛғ ! sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. \n\n**ᴇʀʀᴏʀ** : {} " \
-            "\n\n**ᴩʟᴇᴀsᴇ ғᴏʀᴡᴀʀᴅ ᴛʜɪs ᴍᴇssᴀɢᴇ ᴛᴏ @DevilsHeavenMF**, ɪғ ᴛʜɪs ᴍᴇssᴀɢᴇ " \
-            "ᴅᴏᴇsɴ'ᴛ ᴄᴏɴᴛᴀɪɴ ᴀɴʏ sᴇɴsɪᴛɪᴠᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ " \
+ERROR_MESSAGE = "ᴡᴛғ ! لم يتم تسجيله بواسطة الروبوت. \n\n**ᴇʀʀᴏʀ** : {} " \
+            "\n\n**يرجى إعادة توجيه هذه الرسالة @so_rs_lk**, ɪғ ᴛʜɪs ᴍᴇssᴀɢᴇ " \
+            "لا'  تحتوي على أي مادة حساسة " \
             "ʙᴇᴄᴀᴜsᴇ ᴛʜɪs ᴇʀʀᴏʀ ɪs **ɴᴏᴛ ʟᴏɢɢᴇᴅ ʙʏ ᴛʜᴇ ʙᴏᴛ** !"
