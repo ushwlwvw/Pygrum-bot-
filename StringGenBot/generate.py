@@ -39,7 +39,7 @@ buttons_ques = [
 
 gen_button = [
     [
-        InlineKeyboardButton(text="🙄 دورة عامه 🙄", callback_data="generate")
+        InlineKeyboardButton(text="اضغط للحصول على جلسه", callback_data="generate")
     ]
 ]
 
@@ -60,7 +60,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         ty += " بوت"
     await msg.reply(f"» محاولة البدء**{ty}** sᴇssɪᴏɴ ɢᴇɴᴇʀᴀᴛᴏʀ...")
     user_id = msg.chat.id
-    api_id_msg = await bot.ask(user_id, "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴩɪ_ɪᴅ** ᴛᴏ ᴩʀᴏᴄᴇᴇᴅ.\n\nᴄʟɪᴄᴋ ᴏɴ /skip ғᴏʀ ᴜsɪɴɢ ʙᴏᴛ's ᴀᴘɪ.", filters=filters.text)
+    api_id_msg = await bot.ask(user_id, "**ارسل لي الايبي ايدي**\n\السورس  @aaaalqp.", filters=filters.text)
     if await cancelled(api_id_msg):
         return
     if api_id_msg.text == "/skip":
@@ -70,24 +70,24 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**ᴀᴩɪ_ɪᴅ** ᴍᴜsᴛ ʙᴇ ᴀɴ ɪɴᴛᴇɢᴇʀ, sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**ارسل لي الايبي ايدي** sᴛᴀʀᴛ ɢᴇɴᴇʀᴀᴛɪɴɢ ʏᴏᴜʀ sᴇssɪᴏɴ ᴀɢᴀɪɴ.", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
             return
-        api_hash_msg = await bot.ask(user_id, "» ɴᴏᴡ ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴀᴩɪ_ʜᴀsʜ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ", filters=filters.text)
+        api_hash_msg = await bot.ask(user_id, "» **ارسل لي الايبي هاش** ᴛᴏ @aaaalqp", filters=filters.text)
         if await cancelled(api_hash_msg):
             return
         api_hash = api_hash_msg.text
     if not is_bot:
-        t = "» ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ᴩʜᴏɴᴇ_ɴᴜᴍʙᴇʀ** ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ ғᴏʀ ᴡʜɪᴄʜ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ɢᴇɴᴇʀᴀᴛᴇ sᴇssɪᴏɴ. \nᴇxᴀᴍᴩʟᴇ : `+910000000000`'"
+        t = "» ارسل لي الان رقم تيليجرام مع رمز الدوله . \nᴇxᴀᴍᴩʟᴇ : `+100000000000`'"
     else:
-        t = "ᴩʟᴇᴀsᴇ sᴇɴᴅ ʏᴏᴜʀ **ʙᴏᴛ_ᴛᴏᴋᴇɴ** ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ.\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
+        t = "الان ارسل باسورد التحقق .\nᴇxᴀᴍᴩʟᴇ : `5432198765:abcdanonymousterabaaplol`'"
     phone_number_msg = await bot.ask(user_id, t, filters=filters.text)
     if await cancelled(phone_number_msg):
         return
     phone_number = phone_number_msg.text
     if not is_bot:
-        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ sᴇɴᴅ ᴏᴛᴩ ᴀᴛ ᴛʜᴇ ɢɪᴠᴇɴ ɴᴜᴍʙᴇʀ...")
+        await msg.reply("»**تم ارسل رمز الى حسابك** ...")
     else:
-        await msg.reply("» ᴛʀʏɪɴɢ ᴛᴏ ʟᴏɢɪɴ ᴠɪᴀ ʙᴏᴛ ᴛᴏᴋᴇɴ...")
+        await msg.reply("» **تم ارسل رمز الى حسابك** ...")
     if telethon and is_bot:
         client = TelegramClient(StringSession(), api_id, api_hash)
     elif telethon:
@@ -158,7 +158,8 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text   =   f  "** ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ ** \ n \ n` {string_session}` \ n \ n ** ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ: ** StringFatherBot \ n🍒 ** ɴᴏᴛᴇ: ** ᴅᴏɴ'ᴛ sʜᴀʀᴇ ɪᴛ ɪᴛʜ ᴏᴜʀ ᴏᴜʀ ɢɪʀʟғʀɪᴇɴᴅ ᴀɴᴅ ᴅᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴊᴏɪɴdevilshevenmf 🥺 "
+    text   =   f  "** ᴛʜɪs ɪs ʏᴏᴜʀ {ty} sᴛʀɪɴɢ sᴇssɪᴏɴ ** \ n \ n` {string_session}` \ n \ n ** مطور سورس الخليفه: ** H_M_Dr \ n🍒 ** انضم هنا: @aaaalqp** ᴅᴏ
+    🥺 "
     try:
         if not is_bot:
             await client.send_message("me", text)
@@ -167,7 +168,7 @@ async def generate_session(bot: Client, msg: Message, telethon=False, is_bot: bo
     except KeyError:
         pass
     await client.disconnect()
-    انتظر  البوت . send_message ( msg . chat . id ، "» sᴜᴄᴄᴇssғᴜʟʟʏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʏᴏᴜʀ {} sᴛʀɪɴɢ sᴇssɪᴏɴ. \ n \ nᴩʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴍᴇssᴀɢᴇs ᴛᴏ ɢᴇᴛ ɪᴛ! \ n \ n ** ᴀ sᴛʀɪɴɢ ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ ʙʏ **DevilsHeavenMF 🥺 " . تنسيق ( "ᴛᴇʟᴇᴛʜᴏɴ"  إذا كانت  telethon  else  "ᴩʏʀᴏɢʀᴀᴍ" ))
+    انتظر  البوت . send_message ( msg . chat . id ، "» {} \ n \ تم استخراج الجلسه اذهب للى الرسائل المحفوظه \ n \ n ** ᴀ قنـاة السورس  **@aaaalqp " . تنسيق ( "ᴛᴇʟᴇᴛʜᴏɴ"  إذا كانت  telethon  else  "ᴩʏʀᴏɢʀᴀᴍ" ))
 
 
 async def cancelled(msg):
